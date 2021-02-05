@@ -25,6 +25,7 @@ function App() {
 
   // rendering to-do-list (bonus: in alphabetical order)
   // clicked on item to mark completed (eg. strike through) --> handleClick
+  /*   // 1st attempt: toggle when clicked on the item  ** Does not work, style applied to all items
   const todos = tasks.sort().map((task, index) => (
     <li
       key={index}
@@ -34,7 +35,15 @@ function App() {
     >
       {task}
     </li>
-  ));
+  )); */
+
+  /*   // 2nd attempt: try with adding div and button  ** Does not work, same with above.
+  const todos = tasks.sort().map((task, index) => (
+    <div className={isDone ? "text-decoration-line-through" : "fst-normal"}>
+      <li key={index}>{task}</li>
+      <button onClick={handleClick}>Mark as Completed/Put back to list</button>
+    </div>
+  )); */
 
   const [values, setValues] = useState("");
   function handleInputChange(event) {
