@@ -7,9 +7,9 @@ function App() {
     "Read React docs",
     "Go for a walk",
     "Buy some food"
-    // {name: "Read React docs", isDone: false},
-    // {name: "Go for a walk", isDone: true},
-    // {name: "Buy some food", isDone: false}
+    // {task: "Read React docs", isDone: false},
+    // {task: "Go for a walk", isDone: true},
+    // {task: "Buy some food", isDone: false}
   ];
   // Declare a 'to-do-list' state variable, with initial_state
   const [tasks, setTask] = useState(INITIAL_STATE);
@@ -36,9 +36,16 @@ function App() {
     </li>
   ));
 
+  const [values, setValues] = useState("");
+  function handleInputChange(event) {
+    const value = event.target.value;
+    // const name = event.target.name;
+    setValues(value);
+  }
+
   function addTask(event) {
     event.preventDefault();
-    setTask(state => [...state, event.target.name]);
+    setTask(state => [...state, values]);
   }
 
   // create a function when add form has been clicked
@@ -53,7 +60,7 @@ function App() {
       <form>
         <label htmlFor="task">
           New task:
-          <input type="text" id="task" onchange={addTask} />
+          <input type="text" id="task" onChange={handleInputChange} />
         </label>
         <button onClick={addTask}>Add</button>
       </form>

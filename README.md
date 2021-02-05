@@ -65,7 +65,7 @@ Give yourself a grade for each question. Explain why you gave yourself that grad
 REACT:
 
 - Start time: 9:45am
-- submitted time: 12:45
+- submitted time: 12:40
 
 - Grade: 2
 - Explanation: I understand the concept, I think. But I am still confused with Syntax and
