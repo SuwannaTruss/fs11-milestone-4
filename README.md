@@ -62,5 +62,13 @@ Give yourself a grade for each question. Explain why you gave yourself that grad
 
 ### 1. To Do List
 
-- Grade:
-- Explanation:
+REACT:
+
+- Start time: 9:45am
+- submitted time: 12:45
+
+- Grade: 2
+- Explanation: I understand the concept, I think. But I am still confused with Syntax and
+  I cannot finish it in time. I still need to make a style toggle work for individual item. Also, I need to check the syntax for onChange to update input to my tasks list.
+
+- finished time:
