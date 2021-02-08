@@ -10,7 +10,7 @@ function App() {
     { task: "Buy some food", isCompleted: false }
   ];
   // Declare a 'to-do-list' state variable, with initial_state
-  const [tasks, setTask] = useState(INITIAL_STATE);
+  const [tasks, setTasks] = useState(INITIAL_STATE);
   // Use 'isCompleted as a toggle state, to make task done or reset to not done
   const [newTask, setNewTask] = useState({
     task: "",
@@ -30,60 +30,51 @@ function App() {
 
   function addTask(event) {
     event.preventDefault();
-    setTask(state => [...state, newTask]);
+    setTasks(state => [...state, newTask]);
   }
 
-  function handleClick(event) {
-    event.preventDefault();
+  //create a function when clicked on item - changed status, which will strike out when isCompleted is true.
+  function handleClick(i) {
+    // event.preventDefault();
     console.log("the task was clicked");
     // May be need to assign this to eaxch task in the list instead?
-    setTask(state => (state.isCompleted ? false : true));
+    // setTasks(state => (state.isCompleted ? false : true));  //cannot chage state of only one item, must retrun the whole array using map to change data of the selected index.
+    const changeComplete = tasks.map((task, index) =>
+      index === i ? { ...task, isCompleted: !task.isCompleted } : task
+    );
+    setTasks(changeComplete);
   }
-
-  // rendering to-do-list (bonus: in alphabetical order)
-  // clicked on item to mark completed (eg. strike through) --> handleClick
-  const todos = tasks.map((item, index) => (
-    <div
-      className={
-        item.isCompleted ? "text-decoration-line-through" : "fst-normal"
-      }
-    >
-      <li key={index} onClick={handleClick}>
-        {item.task}
-      </li>
-    </div>
-  ));
-
-  //create a function when clicked on item in the list to strike out as done.
 
   return (
     <div className="App">
       <h3>To Do List</h3>
 
       {/* create a form to add new items - submit call function */}
-      <form>
-        <label htmlFor="task">
-          New task:
-          <input type="text" id="task" onChange={handleInputChange} />
-        </label>
-        <button onClick={addTask}>Add</button>
-      </form>
+      <div>
+        <form>
+          <label htmlFor="task">
+            New task:
+            <input type="text" id="task" onChange={handleInputChange} />
+          </label>
+          <button onClick={addTask}>Add</button>
+        </form>
+      </div>
 
       {/*  display to-do-list (bonus: in alphabetical order)
            clicked on item to mark completed (eg. strike through) --> handleClick */}
       <div>
         <ul>
-          tasks.map((item, index) => (
-          <div
-            className={
-              item.isCompleted ? "text-decoration-line-through" : "fst-normal"
-            }
-          >
-            <li key={index} onClick={handleClick}>
+          {tasks.map((item, index) => (
+            <li
+              key={index}
+              onClick={() => handleClick(index)}
+              className={
+                item.isCompleted ? "text-decoration-line-through" : "fst-normal"
+              }
+            >
               {item.task}
             </li>
-          </div>
-          ))
+          ))}
         </ul>
       </div>
     </div>
